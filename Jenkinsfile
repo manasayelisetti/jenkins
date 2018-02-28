@@ -13,9 +13,9 @@ pipeline {
             }
 }
 
-  stage('docker step') {
+  stage('clean again') {
       steps {
-          sh 'sudo docker pull centos'
+          sh 'mvn clean'
            }
 
 }
