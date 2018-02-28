@@ -1,6 +1,11 @@
 pipeline {
   agent any
 
+ options {
+  buildDiscarder(logRotator(numToKeepStr: '1', artifactNumToKeepStr: '1')) 
+}
+
+
   stages {
    stage('build') {
       steps {
@@ -13,11 +18,18 @@ pipeline {
             }
 }
 
-  stage('clean again') {
+  stage('docker step') {
       steps {
-          sh 'mvn clean'
+          sh 'sudo docker pull centos'
            }
 
+}
+
+}
+	post {
+	always {
+archiveArtifacts artifacts: 'add/target/*.jar', fingerprint: true
+archiveArtifacts artifacts: 'sub/target/*.jar', fingerprint: true
 }
 }
 }
