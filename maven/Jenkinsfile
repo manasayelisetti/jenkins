@@ -7,11 +7,6 @@ pipeline {
           sh 'echo "heello" > saneeep '
            }
 }
-     stage('install') {
-      steps {
-          sh 'mvn install'
-            }
-}
 
   stage('docker step') {
       steps {
