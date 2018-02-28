@@ -1,7 +1,5 @@
 pipeline {
   agent any
-}
-
 
   stages {
    stage('build') {
@@ -20,7 +18,6 @@ pipeline {
           sh 'sudo docker pull centos'
            }
 
-}
 }
 }
 }
